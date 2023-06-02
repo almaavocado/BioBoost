@@ -1,4 +1,4 @@
-from resume_parser import parse_resume
+from backend.resume_parser import parse_resume
 
 def test_resume_parsing(resume_file_path):
     parsed_resume = parse_resume(resume_file_path)

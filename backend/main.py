@@ -1,5 +1,5 @@
-import resume_parser
-import resume_summary_generator
+import backend.resume_parser as resume_parser
+import backend.resume_summary_generator as resume_summary_generator
 
 def main():
     parsed_resume_data = resume_parser.parse_resume("resume.pdf")  # Replace "resume.pdf" with your actual file path
