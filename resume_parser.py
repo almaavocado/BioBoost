@@ -17,30 +17,24 @@ def parse_resume(file_path):
     parsed_data = extract_information(text)
     return parsed_data
 
+import PyPDF2
 
 def extract_text_from_pdf(file_path):
-    with open(file_path, 'rb') as file:
-        reader = PyPDF2.PdfReader(file)
-        text = ''
-        for page in reader.pages:
+    with open(file_path, "rb") as f:
+        pdf_reader = PyPDF2.PdfReader(f)
+        text = ""
+        for page in pdf_reader.pages:
             text += page.extract_text()
-        return text
+    return text
 
-
-def extract_text_from_docx(file_path):
-    doc = docx.Document(file_path)
-    paragraphs = [p.text for p in doc.paragraphs]
-    return '\n'.join(paragraphs)
-
-
-
-def extract_text_from_pdf(file_path):
-    with open(file_path, 'rb') as file:
-        reader = PyPDF2.PdfReader(file)
-        text = ''
-        for page in reader.pages:
-            text += page.extract_text()
-        return text
+def parse_resume(file_path):
+    if file_path.endswith(".pdf"):
+        text = extract_text_from_pdf(file_path)
+    else:
+        text = extract_text_from_docx(file_path)
+    
+    parsed_data = extract_information(text)
+    return parsed_data
 
 
 def extract_text_from_docx(file_path):
