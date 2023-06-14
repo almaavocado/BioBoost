@@ -1,11 +1,27 @@
-import Upload from "./components/Upload";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import resumeReducer from './redux/resumeSlice';
+import UploadResumeButton from './components/button/UploadResumeButton';
 
-function App() {
+const store = configureStore({
+  reducer: {
+    resume: resumeReducer,
+  },
+});
+
+const App = () => {
   return (
-    <div>
-      <Upload />
-    </div>
+    <Provider store={store}>
+      <div>
+        <h1>Bio Boost</h1>
+        <UploadResumeButton />
+      </div>
+    </Provider>
   );
-}
+};
 
-export default App;
+export default App; // Add this line to export the App component as the default export
+
+ReactDOM.render(<App />, document.getElementById('root'));
