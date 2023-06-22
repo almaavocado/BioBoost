@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../services/authSlice";
-import Button from "../atoms/Button";
+import Button from "../components/atoms/Button";
+import { loginAPI } from "../services/authAPI";
 
 
 const LoginPage = () => {
@@ -9,8 +10,16 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    dispatch(login({ email, password }));
+  const handleLogin = async () => {
+    try {
+      // Call the login API function with email and password
+      const user = await loginAPI(email, password);
+      // Dispatch the login action with the user data
+      dispatch(login(user));
+    } catch (error) {
+      console.error("Login failed", error);
+      // Handle login failure, e.g., display an error message
+    }
   };
 
   return (
@@ -32,7 +41,7 @@ const LoginPage = () => {
           className="py-2 px-4 rounded-md mb-4"
         />
         <div className="text-sm mt-1">
-          <a href="/forgot-password" className="font-medium text-gray-400 hover:opacity-75">
+          <a href="/recover" className="font-medium text-gray-400 hover:opacity-75">
             Forgot password?
           </a>
         </div>

@@ -3,8 +3,8 @@ import { linkedin, star  } from "../assets";
 
 export const navLinks = [
   {
-    id: "home",
-    title: "Home",
+    id: "services",
+    title: "Services",
     link: "/"
   },
   {
@@ -18,6 +18,20 @@ export const navLinks = [
     link: "/signup",
   },
 ];
+
+export const homeNavLinks = [
+  {
+    id: "home",
+    title: "Home",
+    link: "/home"
+  },
+  {
+    id: "logout",
+    title: "Logout",
+    link: "/",
+  },
+];
+
 
 export const features = [
 

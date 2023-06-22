@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../services/authSlice";
-import Button from "../atoms/Button";
+import Button from "../components/atoms/Button";
+
 
 
 const SignUpPage = () => {
@@ -41,12 +42,9 @@ const SignUpPage = () => {
         <p className="mt-4 text-sm font-medium text-white text-center">
               Already have an account?
               {' '}
-              <button
-                type="button"
-                className="text-gray-300 font-semibold hover:opacity-75"
-              >
-                Log In
-              </button>
+            <a href="/login" className="font-medium text-gray-400 hover:opacity-75">
+              Login
+            </a>
             </p>
         <Button styles="mt-6 w-48" text="Sign Up" onClick={handleSignUp} />
       </div>
