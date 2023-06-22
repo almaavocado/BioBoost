@@ -10,7 +10,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    // Dispatch the login action with email and password
     dispatch(login({ email, password }));
   };
 
